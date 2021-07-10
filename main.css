@@ -1,0 +1,13 @@
+h1 {
+	text-align:center;
+	text-shadow: 5px 5px 8px red;
+}
+
+#abc1 {
+	font-family:sans-serif;
+	text-align:center;
+}
+
+body {
+	background-color:orange;
+}

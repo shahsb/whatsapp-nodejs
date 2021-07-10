@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="main.css"> 
+	<style>
+		h1 {
+			text-align:center;
+			text-shadow: 5px 5px 8px red;
+		}
+
+		#abc1 {
+			font-family:sans-serif;
+			text-align:center;
+		}
+
+		textarea {
+			width:750px;
+			height:184px;
+		}
+
+		body {
+			background-color:orange;
+		}
+		
+		button {
+			background-color:green;
+			color:white;
+			font-family:sans-serif;
+			font-weight:bold;
+			width:15%;
+		}
+	</style>
+	<script>
+		// get the element
+		const element = document.getElementById('send_msg')
+		
+		// always checking if the element is clicked, if so, do alert('hello')
+		element.addEventListener("click", () => {
+			alert('hello');
+		});
+	</script>
+	<title>WA-Easy</title>
+</head>
+
+<body>
+	<h1>Welcome</h1>
+	<div id="abc1">
+		<h2>Send Message to Multiple Conacts at once</h2>
+		<label> Select a CSV file containing contact details:</label><br>
+		<input type="file" id="myfile" name="myfile"><br><br>
+		<label>Enter Message:</label><br><br>
+		<textarea></textarea><br><br>
+		<button id="send_msg">Send</button>
+	</div>
+	
+	<div id="abc2">
+	</div>
+
+</body>
+
+</html>
