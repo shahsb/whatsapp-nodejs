@@ -38,18 +38,19 @@ function createWaGroup(client) {
             .catch((err) => {
                 console.log('WA GROUP CREATION FAILED : ' + err.text);
             });
-    //console.log(`$$$ What's App group:[${gname}] created successfully...`);
+    console.log(`$$$ What's App group:[${gname}] created successfully...`);
 }
 
 async function readContacts() {
     return new Promise(function(resolve, reject) {
         var rd = readline.createInterface({
-            input: fs.createReadStream('./contact.txt'),
+            input: fs.createReadStream('./contacts.csv'),
             terminal: false
         });
         
         rd.on('line', function(line) {
             data.contacts.push(line);
+			console.log('Got conatct : ' + line);
         });
 
         rd.on('close', function() {
@@ -82,6 +83,7 @@ async function readMessage() {
         try {
             const message = fs.readFileSync('./message.txt');
             data.message = message.toString();
+			console.log('GOT below msg:\n' + data.message);
             resolve();
         } catch (err) {
             reject(err);
@@ -96,7 +98,7 @@ async function initBot() {
 async function main() {
     try {
 		
-		let handleRequest = (request, response) => {
+		/*let handleRequest = (request, response) => {
 		response.writeHead(200, {
 			'Content-Type': 'text/html'
 		});
@@ -111,7 +113,7 @@ async function main() {
 		});
 	};
 
-	http.createServer(handleRequest).listen(9001);
+	http.createServer(handleRequest).listen(9001);*/
 
 	/*const server = http.createServer((req, res) => {
 	res.writeHead(200, { 'content-type': 'text/html' })
@@ -119,30 +121,43 @@ async function main() {
 	})
 
 	server.listen(process.env.PORT || 3000)*/
-
-	/*console.log('Hello From SBS');
-        await readContacts();
-        await validateContacts(data.contacts);
-        await readMessage();
-
-        const client = await initBot();
+	console.log('### WELCOME TO OUR APP ###\n');
+	//const client = await initBot();
+	let client;
 
 	while (true)
 	{
-		const choice = prompt('************\n1-Send MSG\n2-Create Group\n3-Send Contact\n4-Exit\n**********\nEnter your Choice:');
+		const choice = prompt('************\n1-InitiateNewBot\n2-Send MSG\n3-Exit\n**********\n\nEnter your Choice:');
+		//console.log('3-Create Group\n4-Send Contact\n5-Exit\n**********\n\nEnter your Choice:');
 		console.log(`Your chice is ${choice}`);
 		ch = Number(choice);
 		switch(ch)
 		{
 			case 1:
-				console.log('**** SENDING TEXT MESSAGE TO THE USER LIST *****');
-				await sendMessages(client);
+				console.log('**** Initiating request for new whatsapp number ****');
+				client = await initBot();
 				break;
 			case 2:
+				console.log('**** SENDING TEXT MESSAGE TO THE USER LIST *****');
+				console.log('READING CONTACTS from contacts.csv from location:\"' + process.cwd()+'\"');
+				await readContacts();
+				console.log('READ CONTACTS SUCCESS..');
+				console.log('Validating contact numbers');
+				await validateContacts(data.contacts);
+				console.log('Validation DONE..');
+				console.log('Reading Message to be sent from message.txt file from location: \"' + process.cwd()+'\"');
+				await readMessage();
+				console.log('Message Read Successfully');
+				console.log('SENDING MESSAGE TO ALL CONTACTS..');
+				await sendMessages(client);
+				console.log('MESSAGE SENT SUCCESSFULLY TO ALL CONTACTS..');
+				break;
+			/*case 3:
 				console.log('****** CREATING WA GROUP *********');
+				console.log(' ' + client);
 				await createWaGroup(client);
 				break;
-			case 3:
+			case 4:
 				console.log('****** SENDING CONTACT ***********');
 				// Send contact
 				await client
@@ -153,8 +168,8 @@ async function main() {
   				.catch((erro) => {
     				console.error('Error when sending: ', erro); //return object error
   				});
-				break;
-			case 4:
+				break;*/
+			case 3:
 				console.log('***** EXITING, THANK YOU FOR USING OUR APP! *************');
 				process.exit(0);
 				break;
@@ -162,7 +177,7 @@ async function main() {
 				console.log(`Enter correct choice (1 OR 2).. you entered ${ch}`);
 				break;
 		}
-	}*/
+	}
 
     } catch(err) {
         console.log(err.toString());
