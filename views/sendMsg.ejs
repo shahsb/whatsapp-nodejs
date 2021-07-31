@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SendMsg</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="main.css"> 
+	<style>
+		h1 {
+			text-align:center;
+			text-shadow: 5px 5px 8px red;
+		}
+
+		#abc1 {
+			font-family:sans-serif;
+			text-align:center;
+		}
+
+		textarea {
+			width:750px;
+			height:184px;
+		}
+
+		body {
+			background-color:orange;
+		}
+		
+		button {
+			background-color:green;
+			color:white;
+			font-family:sans-serif;
+			font-weight:bold;
+			width:15%;
+		}
+	</style>
+	<script>
+		// get the element
+		const element = document.getElementById('send_msg')
+		
+		// always checking if the element is clicked, if so, do alert('hello')
+		element.addEventListener("click", () => {
+			alert('hello');
+		});
+	</script>
+	<title>WA-Easy</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:purple">
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+		  <a class="nav-item nav-link" href="/">Home</a>
+		  <a class="nav-item nav-link" href="/signIn">SignIn</a>
+		  <a class="nav-item nav-link active" href="/sendMsg">SendMsg <span class="sr-only">(current)</span></a>
+		</div>
+	  </div>
+	</nav>
+
+	<!--
+	<h1>Welcome</h1>
+	<div id="abc1">
+		<h2>Send Message to Multiple Conacts at once</h2>
+		<label> Select a CSV file containing contact details:</label><br>
+		<input type="file" id="myfile" name="myfile"><br><br>
+		<label>Enter Message:</label><br><br>
+		<textarea></textarea><br><br>
+		<button id="send_msg">Send</button>
+	</div>
+	
+	<div id="abc2">
+	</div>
+	-->
+
+	<div id="mainContainer">
+		<h1>Send Message to Multiple Conacts at once</h1>
+		
+		<% if(typeof alert != 'undefined') { %>
+            <% alert.forEach(function(error) { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <%= error.msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+            <% }) %>
+        <% } %>
+		
+		 <form action="/sendMsg" method="POST">
+			<div class="form-group">
+				<label> Select a CSV file containing contact details:</label><br>
+				<input type="file" id="contactsFile" name="contactsFile"><br><br>
+			</div>
+			<div class="form-group">
+                <label for="msg" class="form-label">Enter Message</label>
+                <input type="text" class="form-control" name="msg" id="msg">
+            </div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		 </form>
+		 
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+</body>
+</html>
