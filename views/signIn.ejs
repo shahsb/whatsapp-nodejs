@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SendMsg</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	
+	<style>
+		h1 {
+			text-align:center;
+			text-shadow: 5px 5px 8px red;
+		}
+		body {
+			background-color:orange;
+		}
+		button {
+			background-color:green;
+			color:white;
+			font-family:sans-serif;
+			font-weight:bold;
+			width:15%;
+			align:center;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+		  <a class="nav-item nav-link" href="/">Home</a>
+		  <a class="nav-item nav-link active" href="/signIn">SignIn <span class="sr-only">(current)</span></a>
+		  <a class="nav-item nav-link" href="/sendMsg">SendMsg</a>
+		</div>
+	  </div>
+	</nav>
+	
+	<h1>Welcome to SIGN IN Page. Click Below Submit Button to proceed with sign In</h1>
+	<form action="/signIn" method="POST">
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</body>
+</html>
