@@ -98,7 +98,7 @@ async function initBot() {
 async function main() {
     try {
 		
-		/*let handleRequest = (request, response) => {
+		let handleRequest = (request, response) => {
 		response.writeHead(200, {
 			'Content-Type': 'text/html'
 		});
@@ -113,14 +113,14 @@ async function main() {
 		});
 	};
 
-	http.createServer(handleRequest).listen(9001);*/
+	http.createServer(handleRequest).listen(9001);
 
 	/*const server = http.createServer((req, res) => {
 	res.writeHead(200, { 'content-type': 'text/html' })
 	fs.createReadStream('index.html').pipe(res)
 	})
 
-	server.listen(process.env.PORT || 3000)*/
+	server.listen(process.env.PORT || 3000)
 	console.log('### WELCOME TO OUR APP ###\n');
 	//const client = await initBot();
 	let client;
@@ -168,7 +168,7 @@ async function main() {
   				.catch((erro) => {
     				console.error('Error when sending: ', erro); //return object error
   				});
-				break;*/
+				break;
 			case 3:
 				console.log('***** EXITING, THANK YOU FOR USING OUR APP! *************');
 				process.exit(0);
@@ -177,7 +177,7 @@ async function main() {
 				console.log(`Enter correct choice (1 OR 2).. you entered ${ch}`);
 				break;
 		}
-	}
+	}*/
 
     } catch(err) {
         console.log(err.toString());
@@ -189,5 +189,6 @@ async function main() {
 
     }
 }
+
 
 main();
